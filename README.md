@@ -1,2 +1,2 @@
-# re-introduction-to-r
-Repository for data associated with R training.
+# An Introduction to R with the Tidyverse
+R is one of the most popular open-source languages for data analysis. The tidyverse is a collection of powerful packages in R for common tasks, including data cleaning and visualization. The tidyverse provides a consistent and intuitive introduction to R and serves as a foundation for a growing number of packages in R (e.g., see the tutorial on text analysis). In this tutorial, we will cover the basics of using R and the tidyverse. Before the tutorial, participants should download and install the latest version of R (cran.r-project.org) and RStudio (www.rstudio.com).
