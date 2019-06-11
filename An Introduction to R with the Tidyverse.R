@@ -1,12 +1,12 @@
-# R and Data Manipulation -------------------------------------------------
-# The Tidyverse
+# Load the Tidyverse ------------------------------------------------------
 # install.packages("tidyverse")
 library(tidyverse)
 
+# R and Data Manipulation -------------------------------------------------
 # Importing Data
-getwd()
-
 store_data <- read_csv("store_data.csv")
+
+getwd()
 
 ?read_csv
 
@@ -30,15 +30,15 @@ store_data %>%
 store_data %>% 
   arrange(desc(store_trans))
 
-# Selecting Variables
+# Select Variables
 store_data %>% 
   select(store_spend, age, gender)
 
-# Mutating Variables
+# Mutate Variables
 store_data %>% 
   mutate(store_spend = store_spend / 100)
 
-# Joining Data Frames
+# Join Data Frames
 sat_data <- read_csv("sat_data.csv")
 
 crm_data <- store_data %>% 
@@ -92,7 +92,8 @@ ggplot(crm_data, aes(x = store_spend)) +
 ggplot(crm_data, aes(x = store_spend)) +
   geom_histogram(bins = 10)
 
-ggplot(crm_data, aes(x = store_spend, y = sat_overall)) +
+crm_data %>% 
+  ggplot(aes(x = store_spend, y = sat_overall)) +
   geom_point()
 
 ggplot(crm_data, aes(x = log(store_spend + 1), y = sat_overall)) +
@@ -123,11 +124,13 @@ crm_data %>%
   geom_density(alpha = 0.5)
 
 crm_data %>% 
-  ggplot(aes(
-    x = log(store_spend + 1), 
-    y = sat_overall,
-    color = gender
-  )) +
+  ggplot(
+    aes(
+      x = log(store_spend + 1), 
+      y = sat_overall,
+      color = gender
+    )
+  ) +
   geom_jitter(size = 2, alpha = 0.5) +
   geom_smooth(method = "lm", se = FALSE) +
   facet_wrap(~ country) +
@@ -168,7 +171,7 @@ ca_crm_data %>%
   geom_smooth(method = "lm")
 
 # Cleaning Data and Summarization -----------------------------------------
-# Gather and Spread Columns
+# Gather Columns
 online_data
 
 online_data <- online_data %>% 
@@ -180,6 +183,7 @@ online_data <- online_data %>%
 
 online_data
 
+# Spread Columns
 online_data %>% 
   spread(key = week, value = visits)
 
